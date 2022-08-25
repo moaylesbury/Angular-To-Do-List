@@ -1,0 +1,35 @@
+
+
+
+
+<div id="wrapper">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div id="article">
+    <h1>My To-Do List</h1>
+
+    
+
+    <!-- div containing functionality to add a task -->
+    <div class="add-todo-item">
+      <button class="add-todo" (click)="addTask(userInput)"><i class="fa fa-plus"></i></button>
+      <!-- <input type="text" class="new-todo-name" placeholder="new task name" [(ngModel)]="userInput"> -->
+      <input class="new-todo-name" placeholder="new task name" (input)="userInput=getValue($event)">
+    </div>
+
+    <!-- div containing functionality to clear tasks  -->
+    <div (click)="clearTasks()" style="padding-top: 10px; padding-bottom: 10px;">
+      <button class="lab0"><label style="padding:30px;">clear</label></button>
+    </div>
+
+
+    <!-- dynamically generated series of divs representing tasks -->
+    <div *ngFor="let task of tasks; let i = index;" class="todo-item" @fadeInOut>
+      <button class="delete-todo" (click)="completeTask(task)"><i class="fa fa-check"></i></button>
+      <label class="todo-name">{{task}}</label>
+      <!-- change this back to label -->
+    </div>
+
+
+  </div>
+</div>
+
